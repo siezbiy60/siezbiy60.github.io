@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Word Bloom — Support</title>
+  <title>WordBloom — Support &amp; Help Center</title>
+  <meta name="description" content="Official support and help center for WordBloom, a free word search puzzle game by TPOK Tech." />
   <style>
     :root { color-scheme: light dark; }
     * { box-sizing: border-box; }
@@ -17,13 +18,13 @@
     .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
     header {
       text-align: center;
-      padding: 40px 20px;
+      padding: 44px 20px;
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
       color: #fff;
       border-radius: 0 0 24px 24px;
     }
-    header h1 { margin: 0; font-size: 28px; }
-    header p { margin: 8px 0 0; opacity: .9; }
+    header h1 { margin: 0; font-size: 30px; }
+    header p { margin: 8px 0 0; opacity: .92; }
     h2 { font-size: 20px; margin-top: 36px; }
     .card {
       background: #fff;
@@ -33,63 +34,97 @@
       box-shadow: 0 2px 10px rgba(0,0,0,.06);
     }
     a { color: #6366f1; }
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 22px;
+      background: #6366f1;
+      color: #fff !important;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 12px;
+    }
     .email {
       display: inline-block;
-      margin-top: 8px;
+      margin-top: 6px;
       font-size: 18px;
       font-weight: 600;
     }
-    details { margin: 10px 0; }
-    summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+    details { margin: 10px 0; border-bottom: 1px solid rgba(127,127,127,.15); }
+    details:last-child { border-bottom: none; }
+    summary { cursor: pointer; font-weight: 600; padding: 10px 0; }
+    .meta { font-size: 14px; color: #8e8e93; }
     footer { text-align: center; margin-top: 48px; font-size: 13px; color: #8e8e93; }
     @media (prefers-color-scheme: dark) {
       body { color: #f5f5f7; background: #000; }
       .card { background: #1c1c1e; box-shadow: none; }
-      footer { color: #636366; }
+      .meta, footer { color: #8e8e93; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>🌸 HarfBaz (Word Bloom)</h1>
+    <h1>🌸 WordBloom</h1>
     <p>Support &amp; Help Center — by TPOK Tech</p>
   </header>
 
   <div class="wrap">
     <div class="card">
       <h2 style="margin-top:0">Contact Us</h2>
-      <p>Need help, found a bug, or have a suggestion? We usually reply within 48 hours.</p>
+      <p>Need help, found a bug, or have a suggestion? We're a small team and we
+         personally read every message. We usually reply within 48 hours.</p>
       <a class="email" href="mailto:balabancafer3@gmail.com">balabancafer3@gmail.com</a>
+      <br />
+      <a class="btn" href="mailto:balabancafer3@gmail.com?subject=WordBloom%20Support%20Request">Report a Problem</a>
     </div>
 
     <h2>Frequently Asked Questions</h2>
     <div class="card">
-      <details>
-        <summary>How do I play Word Bloom?</summary>
-        <p>Swipe across the connected letters on the grid to form the hidden words. Words can be straight or bend in an L-shape. Find all the words to complete the level.</p>
+      <details open>
+        <summary>How do I play WordBloom?</summary>
+        <p>Swipe across the connected letters on the grid to form the hidden words.
+           Words can run straight or bend in an L-shape. Find all the words to
+           complete the level and unlock the next one.</p>
       </details>
       <details>
-        <summary>Is the game free?</summary>
-        <p>Yes, Word Bloom is completely free to play. The game is supported by ads.</p>
+        <summary>Is the game free? Are there in-app purchases?</summary>
+        <p>WordBloom is completely free to play. There are no in-app purchases and
+           no subscriptions. The game is supported by ads only.</p>
+      </details>
+      <details>
+        <summary>How do I remove ads?</summary>
+        <p>The game is ad-supported and free. Watching the occasional ad keeps the
+           game free for everyone. You can play offline (in airplane mode) if you
+           prefer not to see ads.</p>
       </details>
       <details>
         <summary>How do I restore my progress on a new device?</summary>
-        <p>Your level progress is stored on your device. For help moving progress, contact us.</p>
+        <p>Your level progress is stored locally on your device. If you switch
+           devices and need help, email us and we'll do our best to assist.</p>
       </details>
       <details>
-        <summary>The game crashes or a word looks wrong.</summary>
-        <p>Please email us with your device model and what happened. Screenshots help a lot. We fix reported issues quickly.</p>
+        <summary>I found a wrong word or the game crashed.</summary>
+        <p>Please email us with your device model, iOS version, and a short
+           description of what happened. Screenshots help a lot. We fix reported
+           issues quickly.</p>
+      </details>
+      <details>
+        <summary>Which languages are supported?</summary>
+        <p>WordBloom includes word sets for multiple languages. More words and
+           languages are added in updates.</p>
       </details>
     </div>
 
-    <h2>Legal</h2>
+    <h2>Privacy &amp; Legal</h2>
     <div class="card">
-      <p><a href="privacy.html">Privacy Policy</a></p>
-      <p>Word Bloom is free to play and supported by ads.</p>
+      <p><a href="privacy.html">Read our Privacy Policy</a></p>
+      <p class="meta">WordBloom does not require an account and does not track you.
+         Ads are served by Google AdMob in non-personalized mode.</p>
     </div>
 
     <footer>
-      © 2026 TPOK Tech — HarfBaz (Word Bloom). All rights reserved.
+      <p class="meta">Last updated: June 2026</p>
+      © 2026 TPOK Tech — WordBloom. All rights reserved.
     </footer>
   </div>
 </body>
