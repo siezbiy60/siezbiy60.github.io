@@ -1767,8 +1767,8 @@ document.getElementById('rateBtn').addEventListener('click', () => {
 // ---------- oyun durumu ----------
 const S = { MENU: 0, PLAY: 1, DEAD: 2 };
 let state = S.MENU;
-let speed = 10;            // birim/sn (daha yavaş başlangıç)
-let baseSpeed = 10;
+let speed = 24;            // birim/sn (daha yavaş başlangıç)
+let baseSpeed = 24;
 let score = 0;
 let combo = 0;
 let worldRot = 0;          // hedef dönüş
@@ -1990,7 +1990,7 @@ if (DEMO) {
 function spawnWave() {
   // zorluk: hız arttıkça boşluk daralır
   const diff = Math.min(1, (speed - baseSpeed) / 40); // zorluk daha da yavaş artar
-  const gapSize = 2.1 - diff * 0.55; // radyan (boşluklar daha geniş: 2.1 → 1.55)
+  const gapSize = 1.75 - diff * 0.6; // radyan (boşluklar daha geniş: 2.1 → 1.55)
   const slot = obstacles.find(o => !o.userData.active);
   // dönen boşluk: sadece zorluk yükselince ve ara sıra (erken oyun kolay kalsın)
   const spin = (diff > 0.45 && Math.random() < 0.22) ? (Math.random() < 0.5 ? -1 : 1) * (0.45 + diff * 0.6) : 0;
@@ -2003,7 +2003,7 @@ function spawnWave() {
   if (Math.random() < 0.12 && slot) {
     armPowerup(nextObstZ - 4 - Math.random() * 4, slot.userData.gapCenter + (Math.random() - 0.5) * 0.4, POW_KEYS[Math.floor(Math.random() * POW_KEYS.length)]);
   }
-  nextObstZ -= 18 + Math.random() * 8 - diff * 2; // engeller arası daha çok nefes payı
+  nextObstZ -= 13 + Math.random() * 5 - diff * 3; // engeller arası daha çok nefes payı
 }
 
 function tick() {
@@ -2051,7 +2051,7 @@ function tick() {
 
   if (state === S.PLAY) {
     // hız ve skor artar
-    speed += dt * 0.24;   // daha da yumuşak hızlanma (oyuncular hâlâ zor buldu)
+    speed += dt * 0.95;   // daha da yumuşak hızlanma (oyuncular hâlâ zor buldu)
     // power-up zamanlayıcıları
     if (slowT > 0) slowT -= dt;
     if (x2T > 0) x2T -= dt;
@@ -2110,7 +2110,7 @@ function tick() {
       o.position.z += dz;
       if (!o.userData.passed && zBefore < 0 && o.position.z >= 0) {
         const d = Math.abs(angDiff(playerWorldAngle, o.userData.gapCenter));
-        if (d > o.userData.gapHalf - 0.22) {          // duvara çarptı (daha affedici)
+        if (d > o.userData.gapHalf - 0.06) {          // duvara çarptı (daha affedici)
           if (shield) {                                // kalkan varsa emer, oyun bitmez
             shield = false;
             o.userData.passed = true;
