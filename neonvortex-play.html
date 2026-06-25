@@ -1906,7 +1906,7 @@ function gameOver() {
     $('gameover').classList.add('show');
     gearBtn.classList.remove('hidden');
     // devam butonu: elde 1 kez, HER ölümde göster (reklam hazır değilse bedava devam edilir)
-    $('continueBtn').style.display = !usedContinue ? '' : 'none';
+    $('continueBtn').style.display = 'none';
     // arada bir "puan ver" butonu — henüz puan vermediyse, her 3. ölümde
     $('rateBtn').style.display = (!rated && deathCount % 3 === 0) ? '' : 'none';
   }, 650);
@@ -2274,14 +2274,24 @@ $('goBest').textContent = 'BEST: ' + best;
   function start(){
     var sb=document.getElementById("startBtn");
     if(sb){ sb.click(); }
-    // 28 sn'de zorla CTA
-    setTimeout(function(){ showEnd("How far can you go?"); }, 28000);
-    // oyun bitince (CRASHED ekranı görünür olunca) kısa süre sonra CTA göster
+    // 2 CAN: ilk çarpışmada RETRY hakkı, ikinci çarpışmada CTA → store
     var go=document.getElementById("gameover");
+    var crashes=0, wasShown=false;
     if(go){
       var obs=new MutationObserver(function(){
-        var vis=getComputedStyle(go).display!=="none" && go.classList.contains("show");
-        if(vis){ var sc=(document.getElementById("goScore")||{}).textContent||""; setTimeout(function(){showEnd("You scored "+sc+" — How far can you go?");},1400); }
+        var vis=go.classList.contains("show");
+        if(vis && !wasShown){
+          wasShown=true; crashes++;
+          var cb=document.getElementById("continueBtn"); if(cb) cb.style.display="none"; // reklamla devam yok
+          var rb=document.getElementById("retryBtn");
+          var sc=(document.getElementById("goScore")||{}).textContent||"";
+          if(crashes>=2){
+            if(rb) rb.style.display="none";   // hak bitti
+            setTimeout(function(){ showEnd("You scored "+sc+" — How far can you go?"); }, 900);
+          } else {
+            if(rb){ rb.style.display=""; rb.textContent="RETRY (1 left)"; } // tek retry hakkı
+          }
+        } else if(!vis){ wasShown=false; }
       });
       obs.observe(go,{attributes:true,attributeFilter:["class","style"]});
     }
